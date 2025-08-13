@@ -1,0 +1,10 @@
+{
+    "2025-08-12": [
+      { "time": "10:00 AM", "title": "Daily Stand-up" },
+      { "time": "2:00 PM", "title": "Backend API Sync" }
+    ],
+    "2025-08-13": [
+      { "time": "11:00 AM", "title": "Frontend Demo" }
+    ]
+  }
+  

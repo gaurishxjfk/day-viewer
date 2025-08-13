@@ -1,0 +1,22 @@
+name: Gemini Code Review
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Gemini CLI
+        uses: gemini-cli/setup-gemini@v1
+        with:
+          api-key: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Run Gemini Code Review
+        run: |
+          gemini review .
