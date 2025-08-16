@@ -42,7 +42,7 @@ export default function GlyphCharacter({
       {Array.from({ length: 35 }).map((_, index) => (
         <div
           key={index}
-          className={`w-1 h-1 sm:w-2 sm:h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 text-center items-center justify-center border border-gray-900 ${
+          className={`w-2 h-2 sm:w-2 sm:h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 text-center items-center justify-center border border-gray-900 ${
             activeSegments.includes(index) ? "bg-gray-600!" : "bg-black"
           }`}
         >

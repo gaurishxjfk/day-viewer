@@ -29,10 +29,6 @@ function renderDigitalDate(date: Date, isError: boolean = false, copied: boolean
     "text-slate-400",
     "transition-colors",
     "focus:outline-none",
-    "focus:ring-2",
-    "focus:ring-slate-400",
-    "focus:ring-offset-2",
-    "focus:ring-offset-slate-50",
     "mt-6",
     "relative"
   ].join(" ");
