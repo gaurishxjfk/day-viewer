@@ -30,21 +30,20 @@ const digits = [
   { value: "/", segments: [1, 2, 3, 5, 9, 10, 13, 14, 15, 17, 19, 20, 21, 24, 25, 29, 31, 32, 33] },
 ];
 
-export default function DigitalDisplay({
+export default function GlyphCharacter({
   character,
 }: {
   character: number | string;
 }) {
-  console.log(character);
   const activeSegments =
     digits.find((d) => d.value === character)?.segments ?? [];
   return (
-    <div className="grid grid-cols-5 h-35">
+    <div className="grid grid-cols-5">
       {Array.from({ length: 35 }).map((_, index) => (
         <div
           key={index}
-          className={`w-5 h-5 text-center items-center justify-center border border-muted-foreground ${
-            activeSegments.includes(index) ? "bg-gray-600" : "bg-black"
+          className={`w-1 h-1 sm:w-2 sm:h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 text-center items-center justify-center border border-gray-900 ${
+            activeSegments.includes(index) ? "bg-gray-600!" : "bg-black"
           }`}
         >
         </div>

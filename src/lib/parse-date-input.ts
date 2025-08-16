@@ -1,16 +1,17 @@
 export default function parseDateInput(dateInput: string): Date {
     const cleanInput = dateInput.trim().toLowerCase();
     
-    // Match patterns: 12/08, 12-08, 12_08, 12-aug, 12-august
-    const datePattern = /^(\d{1,2})[/\-_](.+)$/;
+    // Match patterns: 12/08, 12-08, 12_08, 12-aug, 12-august, 12-08-2025
+    const datePattern = /^(\d{1,2})[/\-_](.+?)(?:[/\-_](\d{4}))?$/;
     const match = cleanInput.match(datePattern);
     
     if (!match) {
-      throw new Error("Invalid date format. Use DD/MM, DD-MM, DD_MM, DD-MON, or DD-MONTH");
+      throw new Error("Invalid date format. Use DD/MM, DD-MM, DD_MM, DD-MON, DD-MONTH, or DD-MM-YYYY");
     }
     
     const day = parseInt(match[1], 10);
     const monthInput = match[2];
+    const yearInput = match[3];
     const currentYear = new Date().getFullYear();
     
     if (day < 1 || day > 31) {
@@ -49,7 +50,15 @@ export default function parseDateInput(dateInput: string): Date {
       }
     }
     
-    const date = new Date(currentYear, month - 1, day);
+    // Use provided year or default to current year
+    const year = yearInput ? parseInt(yearInput, 10) : currentYear;
+    
+    // Validate year (reasonable range)
+    if (year < 1900 || year > 2100) {
+      throw new Error("Year must be between 1900 and 2100");
+    }
+    
+    const date = new Date(year, month - 1, day);
     
     if (date.getMonth() !== month - 1 || date.getDate() !== day) {
       throw new Error("Invalid date");
