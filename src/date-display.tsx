@@ -7,7 +7,9 @@ import GlyphCharacter from "./glyph-character";
 function handleCopyLink(formattedDate: string, setCopied: (copied: boolean) => void) {
   const currentUrl = window.location.origin;
   const clickableLink = `${currentUrl}/${formattedDate.replace(/\//g, "-")}`;
-  navigator.clipboard.writeText(clickableLink);
+  const markdownLink = `Date: [${formattedDate.replace(/-/g, "/")}](${clickableLink})`;
+  const fullMessage = `${markdownLink}\nTasks worked on:\n`;
+  navigator.clipboard.writeText(fullMessage);
   
   setCopied(true);
   setTimeout(() => setCopied(false), 2000);
